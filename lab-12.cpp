@@ -61,8 +61,8 @@ int main() {
 
     // Call functions
     displayAll(yields);
-    //displaySelect(yields);
-    //searchElement(yields);
+    displaySelect(yields);
+    searchElement(yields);
     sortArray(yields);
     minMaxSumAvg(yields);
     
