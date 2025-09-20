@@ -28,6 +28,11 @@ void displayAll(const array<double, SIZE>&);
 // return: nothing
 void displaySelect(const array<double, SIZE>&);
 
+// sortArray() sortsArray reverse and normal
+// arguments: array
+// return: nothing
+void sortArray(array<double, SIZE>&);
+
 int main() {
     // Create your array of set elements
     array<double, SIZE> yields{};
@@ -46,6 +51,7 @@ int main() {
 
     displayAll(yields);
     displaySelect(yields);
+    sortArray(yields);
 
     /* Testing if the file read correct
     for (int i = 0; i < SIZE; i++) {
@@ -64,7 +70,7 @@ void displayAll(const array<double, SIZE>& arr){
     cout << endl;
 }
 
-void displaySelect(const array<double, SIZE>& arr){\
+void displaySelect(const array<double, SIZE>& arr){
     // Create variable for element number
     int num;
     cout << "Select yield # (enter -1 if you would not like to select another yield): ";
@@ -75,6 +81,24 @@ void displaySelect(const array<double, SIZE>& arr){\
         cout << "Element #" << num << ": " << arr[num - 1] << endl;
         cout << "Select next yield (-1 to stop): ";
         cin >> num;
+    }
+    cout << endl;
+}
+
+void sortArray(array<double, SIZE>& arr){
+    // SOrt the array and display using for loop
+    sort(arr.begin(), arr.end());
+    cout << "Lowest to Highest Yields: ";
+    for (double i : arr) {
+        cout << i << " ";
+    }
+    cout << endl << endl;
+
+    // Sort the array in reverse and display in similar fashion
+    sort(arr.rbegin(), arr.rend());
+    cout << "Highest to Lowest Yields: ";
+    for (double i : arr) {
+        cout << i << " ";
     }
     cout << endl;
 }
