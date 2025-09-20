@@ -23,7 +23,7 @@ const int SIZE = 30;
 // return: nothing
 void displayAll(const array<double, SIZE>&);
 
-// displayAll() displays selected array element
+// displaySelect() displays selected array element
 // arguments: array
 // return: nothing
 void displaySelect(const array<double, SIZE>&);
@@ -32,6 +32,16 @@ void displaySelect(const array<double, SIZE>&);
 // arguments: array
 // return: nothing
 void sortArray(array<double, SIZE>&);
+
+// searchElement() searches for selected element in array
+// arguments: array
+// return: nothing
+void searchElement(array<double, SIZE>&);
+
+// minMax() finds min and max and sum values in the array
+// arguments: array
+// return: nothing
+void minMaxSum(array<double, SIZE>&);
 
 int main() {
     // Create your array of set elements
@@ -49,10 +59,13 @@ int main() {
         file >> yields[i];
     }
 
+    // Call functions
     displayAll(yields);
-    //displaySelect(yields);
+    displaySelect(yields);
+    searchElement(yields);
     sortArray(yields);
-    displayAll(yields);
+    minMaxSum(yields);
+    
 
     /* Testing if the file read correct
     for (int i = 0; i < SIZE; i++) {
@@ -68,7 +81,7 @@ void displayAll(const array<double, SIZE>& arr){
     for (double i : arr) {
         cout << i << " ";
     }
-    cout << endl;
+    cout << endl << endl;
 }
 
 void displaySelect(const array<double, SIZE>& arr){
@@ -101,5 +114,33 @@ void sortArray(array<double, SIZE>& arr){
     for (double i : arr) {
         cout << i << " ";
     }
+    cout << endl << endl;
+}
+
+void searchElement(array<double, SIZE>& arr){
+    // Create a variable for the target element
+    double num;
+    cout << "Enter a yield to search for: ";
+    cin >> num;
+
+    // Iterator to point to the element
+    array<double, SIZE>::iterator it;
+
+    // Search for the element
+    it = find(arr.begin(), arr.end(), num);
+    cout << "Target yield: " << num << endl;
+    if (it != arr.end()){
+        cout << "Target yield found in position " << it - arr.begin() << endl << endl;
+    }
+    else {
+        cout << "Target yield not found" << endl << endl;
+    }
+}
+
+void minMaxSum(array<double, SIZE>& arr){
+    // Use min max and accumulate functions to find the highest lowest and total yields
+    cout << "Max yield: " << *max_element(arr.begin(), arr.end()) <<endl;
+    cout << "Min yield: " << *min_element(arr.begin(), arr.end()) <<endl;
+    cout << "Total yield: " << accumulate(arr.begin(), arr.end(), 0) <<endl;
     cout << endl;
 }
