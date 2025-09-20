@@ -38,10 +38,10 @@ void sortArray(array<double, SIZE>&);
 // return: nothing
 void searchElement(array<double, SIZE>&);
 
-// minMax() finds min and max and sum values in the array
+// minMax() finds min and max and sum values in the array, and average now
 // arguments: array
 // return: nothing
-void minMaxSum(array<double, SIZE>&);
+void minMaxSumAvg(array<double, SIZE>&);
 
 int main() {
     // Create your array of set elements
@@ -61,10 +61,10 @@ int main() {
 
     // Call functions
     displayAll(yields);
-    displaySelect(yields);
-    searchElement(yields);
+    //displaySelect(yields);
+    //searchElement(yields);
     sortArray(yields);
-    minMaxSum(yields);
+    minMaxSumAvg(yields);
     
 
     /* Testing if the file read correct
@@ -137,10 +137,13 @@ void searchElement(array<double, SIZE>& arr){
     }
 }
 
-void minMaxSum(array<double, SIZE>& arr){
-    // Use min max and accumulate functions to find the highest lowest and total yields
+void minMaxSumAvg(array<double, SIZE>& arr){
+    // Use min max and accumulate functions to find the highest lowest and total yields, average also isnt too hard to add so 
+    // CReate sum variable to use for average later
+    double sum = accumulate(arr.begin(), arr.end(), 0.0);
+
     cout << "Max yield: " << *max_element(arr.begin(), arr.end()) <<endl;
     cout << "Min yield: " << *min_element(arr.begin(), arr.end()) <<endl;
-    cout << "Total yield: " << accumulate(arr.begin(), arr.end(), 0) <<endl;
-    cout << endl;
+    cout << "Total yield: " << sum << endl;
+    cout << "Average yield: " << sum / SIZE << endl << endl;
 }
