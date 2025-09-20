@@ -5,7 +5,7 @@
 /* What is some fun data I could use to put itno an array and manipulate?
    Given example was rainfall, as an example. THink of other numeric data that could
    be interesting to analyze using the different <array> functions. How about like a yearly
-   farm yield
+   farm yield - gonna do bushels per acre as the number
 */
 
 #include <iostream>
@@ -18,9 +18,14 @@ using namespace std;
 // Set the array size as a constant
 const int SIZE = 30;
 
+// displayAll() displays all array elements
+// arguments: array
+// return: nothing
+void displayAll(const array<double, SIZE>&);
+
 int main() {
     // Create your array of set elements
-    array<int, SIZE> yields{};
+    array<double, SIZE> yields{};
 
     // Open file and check if it opened
     ifstream file("yields.txt");
@@ -33,4 +38,20 @@ int main() {
     for(int i = 0; i < SIZE; i++){
         file >> yields[i];
     }
+
+    displayAll(yields);
+
+    /* Testing if the file read correct
+    for (int i = 0; i < SIZE; i++) {
+        cout << yields[i] << " ";
+    }
+    */
+
+}
+
+void displayAll(const array<double, SIZE>& arr){
+    for (double i : arr) {
+        cout << i << " ";
+    }
+    cout << endl;
 }
