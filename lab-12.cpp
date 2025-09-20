@@ -23,6 +23,11 @@ const int SIZE = 30;
 // return: nothing
 void displayAll(const array<double, SIZE>&);
 
+// displayAll() displays selected array element
+// arguments: array
+// return: nothing
+void displaySelect(const array<double, SIZE>&);
+
 int main() {
     // Create your array of set elements
     array<double, SIZE> yields{};
@@ -40,6 +45,7 @@ int main() {
     }
 
     displayAll(yields);
+    displaySelect(yields);
 
     /* Testing if the file read correct
     for (int i = 0; i < SIZE; i++) {
@@ -49,9 +55,26 @@ int main() {
 
 }
 
+// Function uses for loop to display every element of the array
 void displayAll(const array<double, SIZE>& arr){
+    cout << "All Yields: ";
     for (double i : arr) {
         cout << i << " ";
+    }
+    cout << endl;
+}
+
+void displaySelect(const array<double, SIZE>& arr){\
+    // Create variable for element number
+    int num;
+    cout << "Select yield # (enter -1 if you would not like to select another yield): ";
+    cin >> num;
+
+    // Create a loop to keep choosing different elements until chosen to stop
+    while(num != -1){
+        cout << "Element #" << num << ": " << arr[num - 1] << endl;
+        cout << "Select next yield (-1 to stop): ";
+        cin >> num;
     }
     cout << endl;
 }
