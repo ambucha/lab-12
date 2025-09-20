@@ -50,8 +50,9 @@ int main() {
     }
 
     displayAll(yields);
-    displaySelect(yields);
+    //displaySelect(yields);
     sortArray(yields);
+    displayAll(yields);
 
     /* Testing if the file read correct
     for (int i = 0; i < SIZE; i++) {
